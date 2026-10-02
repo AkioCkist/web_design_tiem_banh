@@ -1,3 +1,9 @@
-<div class="catalog-banner">
-  <img src="/images/slide/banner1.jpg" alt="Bánh tươi Hỷ Lâm Môn">
-</div>
+<section class="catalog-banner" data-banner aria-label="Ảnh giới thiệu sản phẩm">
+  <div class="banner-track">
+    <% slideImages.forEach((slide, index) => { %>
+      <figure class="banner-slide <%= index === 0 ? 'is-active' : '' %>" data-slide-index="<%= index %>" aria-hidden="<%= index === 0 ? 'false' : 'true' %>">
+        <img src="<%= slide %>" alt="Bánh tươi Hỷ Lâm Môn - ảnh <%= index + 1 %>" <%= index === 0 ? '' : 'loading="lazy"' %>>
+      </figure>
+    <% }); %>
+  </div>
+</section>

@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
 const routes = require('./routes');
 const { mysqlPool } = require('./models/productModel');
@@ -10,6 +11,11 @@ const port = Number(process.env.PORT) || 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+const slidesDirectory = path.join(__dirname, 'public', 'images', 'slide');
+app.locals.slideImages = fs.readdirSync(slidesDirectory)
+  .filter((file) => /\.(jpe?g|png|webp|gif)$/i.test(file))
+  .sort((first, second) => first.localeCompare(second, undefined, { numeric: true }))
+  .map((file) => `/images/slide/${encodeURIComponent(file)}`);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));

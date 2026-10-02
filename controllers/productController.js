@@ -34,6 +34,10 @@ function contacts(req, res) {
   res.render('layout', { title: 'Liên hệ | Tiệm bánh Hỷ Lâm Môn', view: 'contacts' });
 }
 
+function shoppingCart(req, res) {
+  res.render('layout', { title: 'Giỏ hàng | Tiệm bánh Hỷ Lâm Môn', view: 'shopping-cart' });
+}
+
 async function productType(req, res) {
   const products = await getAllProducts();
   res.render('layout', {
@@ -43,4 +47,4 @@ async function productType(req, res) {
   });
 }
 
-module.exports = { home, productDetail, about, contacts, productType };
+module.exports = { home, productDetail, about, contacts, shoppingCart, productType };
