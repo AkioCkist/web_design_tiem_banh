@@ -1,0 +1,4 @@
+<div class="container"><div id="content"><div class="single-product-area"><div class="row">
+  <div class="col-sm-6"><div class="single-product-images"><img src="/images/product/<%= product.image %>" alt="<%= product.name %>"></div></div>
+  <div class="col-sm-6"><div class="single-product-details"><h3><%= product.name %></h3><p class="single-item-price"><span><%= Number(product.promotion_price || product.unit_price).toLocaleString('vi-VN') %>đ</span></p><p><%= product.description || 'Sản phẩm bánh tươi được làm từ nguyên liệu chọn lọc.' %></p><a class="beta-btn primary" href="/shopping_cart.html">Thêm vào giỏ <i class="fa fa-shopping-cart"></i></a></div></div>
+</div></div><div class="space50">&nbsp;</div><%- include('partials/top-products', { products: relatedProducts }) %></div></div>

@@ -1,0 +1,26 @@
+<div class="col-sm-<%= columns || 3 %>">
+  <div class="single-item">
+    <% if (product.promotion_price && Number(product.promotion_price) < Number(product.unit_price)) { %>
+      <div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
+    <% } %>
+    <div class="single-item-header">
+      <a href="/products/<%= product.id %>"><img src="/images/product/<%= product.image %>" alt="<%= product.name %>"></a>
+    </div>
+    <div class="single-item-body">
+      <p class="single-item-title"><%= product.name %></p>
+      <p class="single-item-price">
+        <% if (product.promotion_price && Number(product.promotion_price) < Number(product.unit_price)) { %>
+          <span class="flash-del"><%= Number(product.unit_price).toLocaleString('vi-VN') %>đ</span>
+          <span class="flash-sale"><%= Number(product.promotion_price).toLocaleString('vi-VN') %>đ</span>
+        <% } else { %>
+          <span><%= Number(product.unit_price).toLocaleString('vi-VN') %>đ</span>
+        <% } %>
+      </p>
+    </div>
+    <div class="single-item-caption">
+      <a class="add-to-cart pull-left" href="/shopping_cart.html" aria-label="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a>
+      <a class="beta-btn primary" href="/products/<%= product.id %>">Chi tiết <i class="fa fa-chevron-right"></i></a>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

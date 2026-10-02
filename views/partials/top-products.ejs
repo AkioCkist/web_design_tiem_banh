@@ -1,0 +1,9 @@
+<div class="beta-products-list">
+  <h4>Top Products</h4>
+  <div class="beta-products-details"><p class="pull-left"><%= products.length %> sản phẩm nổi bật</p><div class="clearfix"></div></div>
+  <div class="product-grid">
+    <% products.forEach((product) => { %>
+      <%- include('product-card', { product, columns: 3 }) %>
+    <% }); %>
+  </div>
+</div>

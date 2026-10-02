@@ -1,0 +1,10 @@
+<div class="container">
+  <div id="content" class="space-top-none"><div class="main-content"><div class="space60">&nbsp;</div>
+    <div class="row"><div class="col-sm-12">
+      <% if (search) { %><h3>Kết quả tìm kiếm cho “<%= search %>”</h3><% } %>
+      <%- include('partials/new-products', { products: newProducts }) %>
+      <div class="space50">&nbsp;</div>
+      <%- include('partials/top-products', { products: topProducts }) %>
+    </div></div>
+  </div></div>
+</div>

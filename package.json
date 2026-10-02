@@ -1,0 +1,18 @@
+{
+  "name": "ban-hang-express",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cake shop refactored to Express and EJS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js",
+    "check": "node --check app.js && node --check routes/index.js && node --check controllers/productController.js && node --check models/productModel.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0"
+  }
+}
