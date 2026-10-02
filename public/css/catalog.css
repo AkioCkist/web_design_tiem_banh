@@ -85,6 +85,27 @@
   width: 40px;
   height: 35px;
   margin-right: 2px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.add-to-cart-form {
+  margin: 0;
+}
+
+.cart-account-bar {
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.cart-account-bar a {
+  margin-left: 12px;
+}
+
+.cart-quantity {
+  width: 70px;
+  margin-right: 6px;
 }
 
 .product-grid .add-to-cart .fa-shopping-cart {

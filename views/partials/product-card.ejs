@@ -18,7 +18,11 @@
       </p>
     </div>
     <div class="single-item-caption">
-      <a class="add-to-cart pull-left" href="/shopping_cart.html" aria-label="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i></a>
+      <form class="add-to-cart-form pull-left" action="/cart" method="post">
+        <input type="hidden" name="productId" value="<%= product.id %>">
+        <input type="hidden" name="quantity" value="1">
+        <button class="add-to-cart" type="submit" aria-label="Thêm <%= product.name %> vào giỏ hàng"><i class="fa fa-shopping-cart"></i></button>
+      </form>
       <a class="beta-btn primary" href="/products/<%= product.id %>">Chi tiết <i class="fa fa-chevron-right"></i></a>
       <div class="clearfix"></div>
     </div>

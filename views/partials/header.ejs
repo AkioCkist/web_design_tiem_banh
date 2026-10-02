@@ -9,9 +9,13 @@
       </div>
       <div class="pull-right auto-width-right">
         <ul class="top-details menu-beta l-inline">
-          <li><a href="#"><i class="fa fa-user"></i> Tài khoản</a></li>
-          <li><a href="#">Đăng ký</a></li>
-          <li><a href="#">Đăng nhập</a></li>
+          <% if (user) { %>
+            <li><a href="/shopping_cart.html"><i class="fa fa-user"></i> <%= user.fullName || user.email %></a></li>
+            <li><a href="/logout">Đăng xuất</a></li>
+          <% } else { %>
+            <li><a href="/signup.html">Đăng ký</a></li>
+            <li><a href="/login.html">Đăng nhập</a></li>
+          <% } %>
         </ul>
       </div>
       <div class="clearfix"></div>
