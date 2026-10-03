@@ -5,7 +5,7 @@ const session = require('express-session');
 const fs = require('fs');
 const path = require('path');
 const routes = require('./routes');
-const { mysqlPool, ensureCartTable } = require('./models/productModel');
+const { mysqlPool, ensureCartTable, getCartCount } = require('./models/productModel');
 
 const app = express();
 const port = Number(process.env.PORT) || 3000;
@@ -30,6 +30,19 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(async (req, res, next) => {
+  if (!req.session.user) {
+    res.locals.cartCount = 0;
+    return next();
+  }
+
+  try {
+    res.locals.cartCount = await getCartCount(req.session.user.id);
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 app.use('/', routes);
 
 async function connectDatabase() {

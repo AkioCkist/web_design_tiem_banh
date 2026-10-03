@@ -95,6 +95,15 @@ async function getCart(userId) {
   return rows.map((item) => ({ ...item, subtotal: Number(item.price) * item.quantity }));
 }
 
+async function getCartCount(userId) {
+  await ensureCartTable();
+  const [rows] = await mysqlPool.query(
+    'SELECT COALESCE(SUM(quantity), 0) AS count FROM cart_items WHERE user_id = ?',
+    [userId]
+  );
+  return Number(rows[0].count);
+}
+
 async function addToCart(userId, productId, quantity = 1) {
   await ensureCartTable();
   await mysqlPool.query(`
@@ -124,6 +133,6 @@ async function removeFromCart(userId, productId) {
 
 module.exports = {
   getProducts, getProductsByType, getAllProducts, getTopProducts,
-  authenticateUser, createUser, getCart, addToCart, updateCartItem,
+  authenticateUser, createUser, getCart, getCartCount, addToCart, updateCartItem,
   removeFromCart, ensureCartTable, mysqlPool
 };
